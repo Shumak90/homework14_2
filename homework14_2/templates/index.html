@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p><b>Название фильма</b></p>
+      <form action="/movies/" >
+        <input type="search" name='name' value=''>
+      </form>
+<p>_____________________________________</p>
+<p><b>Поиск по годам</b></p>
+          <form action="/movie/year/" method="post">
+              <p><br>С какого года</br>
+               <input name="s_year" type="text" size="15">
+              </p>
+              <p>По какой год<Br>
+               <input name="po_year" type="text" size="15"></p>
+              <p><input type="submit" value="Отправить">
+              <input type="reset" value="Очистить"></p>
+          </form>
+<p><a href="/rating/children">Посмотрите на children!</a></p>
+<p><a href="/rating/family">Посмотрите на family!</a></p>
+<p><a href="/rating/adult">Посмотрите на adult!</a></p>
+</body>
+</html>

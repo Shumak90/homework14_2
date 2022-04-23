@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for i in movie %}
+    <p><b>Название фильма</b> {{i["title"]}}</p>
+    <p><b>Год выпуска</b> {{i["release_year"]}}</p>
+<p>_____________________________________</p>
+{% endfor %}
+</body>
+</html>
