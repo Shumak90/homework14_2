@@ -36,25 +36,37 @@ def get_json_years(s_year, po_year):
     return jsonify(post_id)
 
 
-@app.route("/rating/children")
-def get_json_rating_children():
-    rating_g = get_movie_by_rating("G")
-    return jsonify(rating_g)
+# @app.route("/rating/children")
+# def get_json_rating_children():
+#     rating_g = get_movie_by_rating("G")
+#     return jsonify(rating_g)
+#
+#
+# @app.route("/rating/family")
+# def get_json_rating_family():
+#     rating_g = get_movie_by_rating("G")
+#     rating_pg = get_movie_by_rating("PG")
+#     rating_pg_13 = get_movie_by_rating("PG-13")
+#     return jsonify(rating_g + rating_pg + rating_pg_13)
+#
+#
+# @app.route("/rating/adult")
+# def get_json_rating_adult():
+#     rating_r = get_movie_by_rating("R")
+#     rating_nc_17 = get_movie_by_rating("NC-17")
+#     return jsonify(rating_r + rating_nc_17)
+
+@app.route("/rating/<rating>")
+def get_json_rating(rating):
+    rating_j = {"children": ["G"], "family": ["G", "PG", "PG-13"], "adult": ["R", "NC-17"]}
+    if rating in rating_j:
+        rating_sql = '\", \"'.join(rating_j[rating])
+        rating_sql = f'\"{rating_sql}\"'
+    else:
+        return jsonify([])
+    return jsonify(get_movie_by_rating(rating_sql))
 
 
-@app.route("/rating/family")
-def get_json_rating_family():
-    rating_g = get_movie_by_rating("G")
-    rating_pg = get_movie_by_rating("PG")
-    rating_pg_13 = get_movie_by_rating("PG-13")
-    return jsonify(rating_g + rating_pg + rating_pg_13)
-
-
-@app.route("/rating/adult")
-def get_json_rating_adult():
-    rating_r = get_movie_by_rating("R")
-    rating_nc_17 = get_movie_by_rating("NC-17")
-    return jsonify(rating_r + rating_nc_17)
 
 
 @app.route("/genre/<genre>")

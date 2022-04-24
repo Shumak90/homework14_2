@@ -9,6 +9,7 @@ def get_movie_by_title(title):
     FROM netflix
     WHERE title LIKE "%{title}%"
     ORDER BY release_year DESC
+    LIMIT 1
     """
     cur.execute(sqlite_query)
     rez = cur.fetchall()
@@ -54,7 +55,7 @@ def get_movie_by_rating(rating):
     sqlite_query = f"""
         SELECT title, rating, description
         FROM netflix
-        WHERE rating LIKE '{rating}'
+        WHERE rating IN ({rating})
         """
     cur.execute(sqlite_query)
     rez = cur.fetchall()
